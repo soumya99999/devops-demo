@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-demo
+  namespace: argocd  # Ensure ArgoCD is installed in this namespace
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/soumya99999/devops-demo.git # Replace with your GitHub repo URL
+    targetRevision: master  # Replace with your branch name if different
+    path: k8s             # Path to your Kubernetes manifests in the repository
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default     # Kubernetes namespace for your application
+  syncPolicy:
+    automated:
+      prune: true          # Automatically remove resources that are no longer defined
+      selfHeal: true       # Automatically fix out-of-sync resources
