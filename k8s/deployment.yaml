@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: devops-demo-container
-        image: soumya318/devops-demo:2.1
+        image: soumya318/devops-demo:2.0
         ports:
         - containerPort: 3000
         resources:
